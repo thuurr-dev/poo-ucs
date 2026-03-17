@@ -1,4 +1,4 @@
-﻿﻿using System.Net.NetworkInformation;
+﻿using System.Net.NetworkInformation;
 using SistemaGestaoEventos;
 
 internal class Program
