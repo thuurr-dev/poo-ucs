@@ -19,6 +19,6 @@ public class CargoInfo
 
     public String QuemEh()
     {
-        return $"{ Codigo } - {Descricao}";
+        return $"{ Codigo } - {Descricao} - {Representante}";
     }
 }

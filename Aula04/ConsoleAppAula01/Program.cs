@@ -4,9 +4,6 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-    
-
-
         Moto minhaMoto = new Moto();
         minhaMoto.CC = 150;
         minhaMoto.Placa = "AAAA222";
