@@ -2,7 +2,7 @@ using System;
 
 namespace SistemaGestaoEventos;
 
-public class Evento
+public class Evento : EntidadeComId
 {
     public DateTime Inicio { get; set; }
 

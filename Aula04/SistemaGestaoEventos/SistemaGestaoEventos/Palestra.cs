@@ -2,7 +2,7 @@ using System;
 
 namespace SistemaGestaoEventos;
 
-public class Palestra
+public class Palestra : EntidadeComId
 {
     public String Titulo { get; set; }
 

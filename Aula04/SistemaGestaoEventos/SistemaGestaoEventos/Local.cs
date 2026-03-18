@@ -2,7 +2,7 @@ using System;
 
 namespace SistemaGestaoEventos;
 
-public class Local
+public class Local : EntidadeComId
 {
     public String Nome { get; set; }
 
