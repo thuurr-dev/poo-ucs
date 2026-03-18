@@ -87,10 +87,17 @@ internal class Program
             }
             else if (opcao == 31)
             {
-                foreach (var item in todosPalestrantes)
+                if (todosPalestrantes.Length >= 1)
                 {
-                    Console.WriteLine($"{item.Nome} - {item.Email} - {item.Telefone}");
-                }   
+                    Console.WriteLine("Todos os palestrantes");
+                    foreach (var item in todosPalestrantes)
+                    {
+                        Console.WriteLine($"{item.Nome} - {item.Email} - {item.Telefone}");
+                    }   
+                } else
+                {
+                    Console.WriteLine("Nenhum palestrante cadastrado!");
+                }
             }
 
         }while(opcao != 99);

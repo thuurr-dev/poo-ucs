@@ -1,0 +1,15 @@
+C:\Users\arthur\code\ucs\poo\aula04\SistemaGestaoEventos\SistemaGestaoEventos\bin\Debug\net8.0\SistemaGestaoEventos.exe
+C:\Users\arthur\code\ucs\poo\aula04\SistemaGestaoEventos\SistemaGestaoEventos\bin\Debug\net8.0\SistemaGestaoEventos.deps.json
+C:\Users\arthur\code\ucs\poo\aula04\SistemaGestaoEventos\SistemaGestaoEventos\bin\Debug\net8.0\SistemaGestaoEventos.runtimeconfig.json
+C:\Users\arthur\code\ucs\poo\aula04\SistemaGestaoEventos\SistemaGestaoEventos\bin\Debug\net8.0\SistemaGestaoEventos.dll
+C:\Users\arthur\code\ucs\poo\aula04\SistemaGestaoEventos\SistemaGestaoEventos\bin\Debug\net8.0\SistemaGestaoEventos.pdb
+C:\Users\arthur\code\ucs\poo\aula04\SistemaGestaoEventos\SistemaGestaoEventos\obj\Debug\net8.0\SistemaGestaoEventos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\arthur\code\ucs\poo\aula04\SistemaGestaoEventos\SistemaGestaoEventos\obj\Debug\net8.0\SistemaGestaoEventos.AssemblyInfoInputs.cache
+C:\Users\arthur\code\ucs\poo\aula04\SistemaGestaoEventos\SistemaGestaoEventos\obj\Debug\net8.0\SistemaGestaoEventos.AssemblyInfo.cs
+C:\Users\arthur\code\ucs\poo\aula04\SistemaGestaoEventos\SistemaGestaoEventos\obj\Debug\net8.0\SistemaGestaoEventos.csproj.CoreCompileInputs.cache
+C:\Users\arthur\code\ucs\poo\aula04\SistemaGestaoEventos\SistemaGestaoEventos\obj\Debug\net8.0\SistemaGestaoEventos.sourcelink.json
+C:\Users\arthur\code\ucs\poo\aula04\SistemaGestaoEventos\SistemaGestaoEventos\obj\Debug\net8.0\SistemaGestaoEventos.dll
+C:\Users\arthur\code\ucs\poo\aula04\SistemaGestaoEventos\SistemaGestaoEventos\obj\Debug\net8.0\refint\SistemaGestaoEventos.dll
+C:\Users\arthur\code\ucs\poo\aula04\SistemaGestaoEventos\SistemaGestaoEventos\obj\Debug\net8.0\SistemaGestaoEventos.pdb
+C:\Users\arthur\code\ucs\poo\aula04\SistemaGestaoEventos\SistemaGestaoEventos\obj\Debug\net8.0\SistemaGestaoEventos.genruntimeconfig.cache
+C:\Users\arthur\code\ucs\poo\aula04\SistemaGestaoEventos\SistemaGestaoEventos\obj\Debug\net8.0\ref\SistemaGestaoEventos.dll
