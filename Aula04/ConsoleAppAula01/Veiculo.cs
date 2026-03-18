@@ -2,7 +2,7 @@ using System;
 
 namespace ConsoleAppAula01;
 
-public class Veiculo
+public abstract class Veiculo
 {
     public Veiculo()
     {
@@ -11,14 +11,18 @@ public class Veiculo
         Modelo = "Precisa definir";
     }
 
-    public String Placa { get; private set; }
+    public String Placa { get; set; }
 
     public String Marca { get; set; }
 
     public String Modelo { get; set; }
 
+    protected String DescricaoDoVeiculo {get;set;}
+
+    public abstract String MinhaDescricao();
+    
     public String Descricao()
     {
-        return $"Marca: { Marca } Modelo { Modelo } e Placa { Placa }";
+        return $"{ MinhaDescricao() } |  Marca: { Marca } Modelo { Modelo } e Placa { Placa }";
     }
 }

@@ -8,13 +8,6 @@ namespace ConsoleAppAula01;
 public class Pessoa
 {
     //construtor
-    public Pessoa(string nome, string sobrenome, int idade)
-    {
-        Nome = nome;
-        Sobrenome = sobrenome;
-        Idade = idade;
-    }
-
     //propriedades
     private String nome;
     public String Nome 
