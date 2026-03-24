@@ -2,8 +2,14 @@ using System;
 
 namespace ConsoleAppAula01;
 
-public class Funcionario
+public class Funcionario<TQualquerCoisa>  
+    where TQualquerCoisa : Veiculo
 {
+    public Funcionario()
+    {
+        
+    }
+
     public Funcionario(String nome, decimal salarioBruto)
     {
         Cargo = new CargoInfo();
@@ -13,6 +19,8 @@ public class Funcionario
         SalarioBruto = salarioBruto;   
         GerarSalarioLiquido(); 
     }
+
+    public TQualquerCoisa VeiculoDoFuncionario {get;set;}
 
     public String Nome { get; set; }
 
