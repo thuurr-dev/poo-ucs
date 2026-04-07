@@ -221,4 +221,119 @@ public class Ficha
     Time time1 = new Time();
     time1.setUniforme(uniforme);
     time1.setNome("Time 1");
+
+    //declaração na classe time:
+    public void setUniforme(Uniforme uniforme) { //tipo do parametro é a uma classe
+        this.uniforme = uniforme;
+    }
+
+    //retorno de objetos: metodos tambem podem retornar, (ou devolver) objetos quando chamados:
+    public Uniforme GetUniforme() { //tipo de retorno é a uma classe
+        return uniforme;
+    }
+
+    //e o null? -> a ausencia de criação de um objeto leva a uma referencia nula ou null
+    //em qualquer local onde se pode passar um objeto, pode-se passar null quando nao se tem o objeto. Isso pode gerar erro caso o metodo acredita que o objeto
+    //virá preenchido
+
+    Time inter = new Time();
+    inter.setUniforme(null); //passagem de objeto nulo
+    Uniforme uniformeInter = inter.GetUniforme(); //retorno de objeto nulo
+    Console.WriteLine(uniformeInter.getCamiseta()); //imprime null (gera erro)
+
+//////////////////////////////////////////////////////////////////////////
+
+    //Chamada de construtores dentro da chamada do metodo: é possivel chamar um construtor dentro de um metodo
+    //Exemplo:
+    Time caxias = new Time("Caxias");
+    caxias.setUniforme(new Uniforme()); //o objeto Uniforme esta sendo criado na hora
+
+    //o mesmo pode ser feito no momento da construção dos objetos:
+    Time juventude = new Time("Juventude", new Uniforme());
+
+    //definição dos construtores:
+    public Uniforme()
+    {
+        this.camiseta = 0;
+        this.calcao = 0;
+        this.meiao = 0;
+    }
+
+    public Uniforme(int camiseta, int calcao, int meiao) //construtores tambem podem ser sobrecarregados
+    {
+        this.camiseta = camiseta;
+        this.calcao = calcao;
+        this.meiao = meiao;
+    }
+
+//////////////////////////////////////////////////////////////////////////
+
+    //Métodos estaticos: podem ser chamados sem a necessidade de instanciar um objeto da classe, nesse caso, usa diretamente o nome da classe
+    //exemplo de método estático:
+    public class Operacoes //metodos estaticos tambem podem ser sobrecarregados
+    {
+        public static double soma(int a, int b)
+        {
+            return a + b;
+        }
+
+        public static double soma(double a, double b)
+        {
+            return a + b;
+        }
+    }
+
+    //exemplo de uso 
+    public class Teste
+    {
+        public static void Main(string[] args)
+        {
+            double c = Operacoes.soma(3, 5); //nome da classe para invocar o metodo
+
+            Console.WriteLine(c);
+        }
+    }
+
+    //a saida de uma funçao deve ser dependente dos seus pametros de entrada
+    
+    //metodos estaticos so podem ser sobreescritos em herança por metodos igualmente estaticos
+    public class FilhaOperacoes : Operacoes
+    {
+        public double soma(int a, int b) //errado
+        {
+            return a + b + 10; //sobrescrita do metodo estatico da classe pai
+        }
+
+        //Como o método sobreescrito aqui não é estático ele não vai compilar
+    }
+
+    //pode-se definir o construtor da classe que tem metodos estaticos como privado
+    //nesse caso, a tentativa de instanciação da classe gerará um erro de compilação
+
+    //exemplo: 
+    public class Operacoes
+    {
+        private Operacoes() //construtor privado, impede a instanciação da classe
+        {
+            
+        }
+
+        public static double soma(int a, int b)
+        {
+            return a + b;
+        }
+
+        public static double soma(double a, double b)
+        {
+            return a + b;
+        }
+    }
+
+    public class Teste
+    {
+        public static void Main(string[] args)
+        {
+            Operacoes o = new Operacoes(); //não permite instanciação do objeto, gera erro de compilação, pois o construtor é privado
+        }
+    }
 }   
