@@ -1,5 +1,6 @@
 ﻿using System.Security.Cryptography.X509Certificates;
 using SistemaGestaoEventos;
+using System.Collections.Generic;
 
 internal class Program
 {
@@ -48,7 +49,7 @@ internal class Program
 
         Console.WriteLine("Escolha um local informando o número dele");
         
-        for(int i = 0; i <= todosLocais.Count(); i++)
+        for(int i = 0; i < todosLocais.Count; i++)
         {
             Console.WriteLine($"{i + 1}) {todosLocais[i].ObterDescricao()}");
         }
@@ -64,83 +65,73 @@ internal class Program
         return novoEvento;
     }
 
-    static MeuTipo[] AdicionarNoVetor<MeuTipo>(MeuTipo novo, MeuTipo[] existentes)
+    static void Listar<TipoDoObjeto>(List<TipoDoObjeto> meuVetor) where TipoDoObjeto : EntidadeComId
     {
-        MeuTipo[] novoVetor = new MeuTipo[existentes.Length + 1];
-
-        int cont;
-
-        for (cont = 0; cont < existentes.Length; cont++)
-        {
-            novoVetor[cont] = existentes[cont];
-        }
-
-        novoVetor[novoVetor.Length - 1] = novo;
-
-        return novoVetor;
-    }
-
-
-    // static Palestrante[] AdicionarPalestrante(Palestrante cliente)
-    // {
-    //     Palestrante[] novoVetor = new Palestrante[todosPalestrantes.Length + 1];
-
-    //     int cont;
-
-    //     for (cont = 0; cont < todosPalestrantes.Length; cont++)
-    //     {
-    //         novoVetor[cont] = todosPalestrantes[cont];
-    //     }
-
-    //     novoVetor[novoVetor.Length - 1] = cliente;
-
-    //     return novoVetor;
-    // }
-
-    // static Local[] AdicionarLocal(Local cliente)
-    // {
-    //     Local[] novoVetor = new Local[todosLocais.Length + 1];
-
-    //     int cont;
-
-    //     for (cont = 0; cont < todosLocais.Length; cont++)
-    //     {
-    //         novoVetor[cont] = todosLocais[cont];
-    //     }
-
-    //     novoVetor[novoVetor.Length - 1] = cliente;
-
-    //     return novoVetor;
-    // }
-
-    // static Evento[] AdicionarEvento(Evento evento)
-    // {
-    //     Evento[] novoVetor = new Evento[todosEventos.Length + 1];
-
-    //     int cont;
-
-    //     for (cont = 0; cont < todosEventos.Length; cont++)
-    //     {
-    //         novoVetor[cont] = todosEventos[cont];
-    //     }
-
-    //     novoVetor[novoVetor.Length - 1] = evento;
-
-    //     return novoVetor;
-    // }
-
-    static void Listar<TipoDoObjeto>(TipoDoObjeto[] meuVetor) where TipoDoObjeto : EntidadeComId
-    {
-        for(int i = 0; i <= meuVetor.Count(); i++)
+        for(int i = 0; i < meuVetor.Count; i++)
         {
             Console.WriteLine($"{i + 1}) {meuVetor[i].ObterDescricao()}");
         }
     }
 
-    static Participante[] todosParticipantes = [];
-    static Palestrante[] todosPalestrantes = [];
-    static Local[] todosLocais = [];
-    static Evento[] todosEventos = [];
+    static List<Participante> todosParticipantes = new List<Participante>();
+    static List<Palestrante> todosPalestrantes = new List<Palestrante>();
+    static List<Local> todosLocais = new List<Local>();
+    static List<Evento> todosEventos = new List<Evento>();
+
+    private static void DeletarPalestrante()
+    {
+        if (todosPalestrantes.Count == 0)
+        {
+            Console.WriteLine("Nenhum palestrante cadastrado.");
+            return;
+        }
+        Console.WriteLine("Escolha o palestrante para deletar:");
+        Listar<Palestrante>(todosPalestrantes);
+        Console.Write("Digite o número: ");
+        if (int.TryParse(Console.ReadLine(), out int numero) && numero >= 1 && numero <= todosPalestrantes.Count)
+        {
+            todosPalestrantes.RemoveAt(numero - 1);
+            Console.WriteLine("Palestrante deletado com sucesso.");
+        }
+        else
+        {
+            Console.WriteLine("Número inválido.");
+        }
+    }
+
+    private static void EditarPalestrante()
+    {
+        if (todosPalestrantes.Count == 0)
+        {
+            Console.WriteLine("Nenhum palestrante cadastrado.");
+            return;
+        }
+        Console.WriteLine("Escolha o palestrante para editar:");
+        Listar<Palestrante>(todosPalestrantes);
+        Console.Write("Digite o número: ");
+        if (int.TryParse(Console.ReadLine(), out int numero) && numero >= 1 && numero <= todosPalestrantes.Count)
+        {
+            var palestrante = todosPalestrantes[numero - 1];
+            Console.WriteLine("Deixe em branco para manter o valor atual.");
+            Console.Write($"Nome ({palestrante.Nome}): ");
+            string nome = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(nome)) palestrante.Nome = nome;
+            Console.Write($"Telefone ({palestrante.Telefone}): ");
+            string telefone = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(telefone)) palestrante.Telefone = telefone;
+            Console.Write($"Email ({palestrante.Email}): ");
+            string email = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(email)) palestrante.Email = email;
+            Console.Write($"Valor Hora ({palestrante.ValorHora}): ");
+            string valor = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(valor) && decimal.TryParse(valor, out decimal v)) palestrante.ValorHora = v;
+            Console.WriteLine("Palestrante editado com sucesso.");
+        }
+        else
+        {
+            Console.WriteLine("Número inválido.");
+        }
+    }
 
     private static void Main(string[] args)
     {
@@ -155,6 +146,8 @@ internal class Program
             Console.WriteLine("20 - Cadastrar Participante");
             Console.WriteLine("30 - Cadastrar Palestrante");
             Console.WriteLine("31 - Listar todos os Palestrantes");
+            Console.WriteLine("32 - Editar Palestrante");
+            Console.WriteLine("33 - Deletar Palestrante");
             Console.WriteLine("40 - Cadastrar Evento");
             Console.WriteLine("99 - Sair do sistema");
             opcao = int.Parse(Console.ReadLine());
@@ -162,31 +155,29 @@ internal class Program
             if (opcao == 10)
             {
                 var localNovo = CadastrarLocal();
-                //todosLocais = AdicionarLocal(localNovo);
-                todosLocais = AdicionarNoVetor<Local>(localNovo, todosLocais);
+                todosLocais.Add(localNovo);
             }
             else if (opcao == 30)
             {
                 //Pede para o usuario as informacoes e gera o objeto Palestrante
                 var novoPalestrante = CadastrarPalestrante();
-                //aqui esta adicionando no vetor de todosPalestrantes.
-                //todosPalestrantes = AdicionarPalestrante(novoPalestrante);
-                todosPalestrantes = AdicionarNoVetor<Palestrante>(novoPalestrante, todosPalestrantes);
+                todosPalestrantes.Add(novoPalestrante);
             }
             else if (opcao == 31)
             {
-                //Refatorado para usar o Listar genérico ao invés de manter 1 para cada tipo de classe
-                // foreach (var item in todosPalestrantes)
-                // {
-                //     Console.WriteLine($"{item.Nome} - {item.Email} - {item.Telefone}");
-                // }   
-
                 Listar<Palestrante>(todosPalestrantes);
+            }
+            else if (opcao == 32)
+            {
+                EditarPalestrante();
+            }
+            else if (opcao == 33)
+            {
+                DeletarPalestrante();
             }
             else if (opcao == 40)
             {
-                //todosEventos = AdicionarEvento(CadastrarEvento());
-                todosEventos = AdicionarNoVetor<Evento>(CadastrarEvento(), todosEventos);
+                todosEventos.Add(CadastrarEvento());
             }
 
         }while(opcao != 99);

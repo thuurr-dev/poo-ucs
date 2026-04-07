@@ -11,4 +11,9 @@ public class Pessoa : EntidadeComId
     public String Email { get; set; }
 
     public String CPF {get;set;}
+
+    public override string ObterDescricao()
+    {
+        return $"{Nome} - {Email}";
+    }
 }
